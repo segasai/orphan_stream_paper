@@ -1,3 +1,7 @@
+// Author: Sergey Koposov ( Email : skoposov _AT_ ed.ac.uk)
+// Changes
+// July 2021 fix the of by one bug in the spline interpolation
+// (does not affect the resutls of the paper)
 functions{
 
 	// get the vector of spacings between nodes
@@ -43,8 +47,8 @@ functions{
 		}
 		for (i in 1:n-2)
 		{
-			M[i+1,i] = hi[i];
-			M[i,i+1] = hi[i];
+			M[i+1,i] = hi[i+1];
+			M[i,i+1] = hi[i+1];
 		}
 		//print (M)
 		zs = M \ ui ; //mdivide_left_spd(M, ui);
